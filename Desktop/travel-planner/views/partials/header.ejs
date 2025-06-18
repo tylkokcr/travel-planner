@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEK Planner - Plan Your Adventures</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">🌍 MEK Planner</a>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/trips/new">New Trip</a></li>
+                </ul>
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <div class="user-info">
+                        <span>👤 <%= user.username %></span>
+                        <a href="/logout" class="btn-logout">Logout</a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+        <div class="alert alert-success">
+            <%= success %>
+        </div>
+    <% } %>
+    
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert alert-error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <main class="container">

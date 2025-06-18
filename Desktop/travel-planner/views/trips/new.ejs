@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<div class="form-container">
+    <h1>New journey</h1>
+    
+    <form action="/trips" method="POST" class="form">
+        <div class="form-group">
+            <label for="name">Name of the trip *</label>
+            <input type="text" id="name" name="name" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Start date *</label>
+            <input type="date" id="startDate" name="startDate" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="endDate">End Date *</label>
+            <input type="date" id="endDate" name="endDate" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" class="form-control"></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create a trip</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
