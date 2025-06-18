@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<div class="form-container">
+    <h1>Edit Transport</h1>
+    <p class="form-subtitle">Trip: <%= trip.name %></p>
+    
+    <form action="/transports/<%= transport.id %>?_method=PUT" method="POST" class="form">
+        <div class="form-group">
+            <label for="type">Transport Type *</label>
+            <select id="type" name="type" required class="form-control">
+                <option value="Plane" <%= transport.type === 'Plane' ? 'selected' : '' %>>Plane</option>
+                <option value="Train" <%= transport.type === 'Train' ? 'selected' : '' %>>Train</option>
+                <option value="Bus" <%= transport.type === 'Bus' ? 'selected' : '' %>>Bus</option>
+                <option value="Car" <%= transport.type === 'Car' ? 'selected' : '' %>>Car</option>
+                <option value="Ship" <%= transport.type === 'Ship' ? 'selected' : '' %>>Ship</option>
+                <option value="Other" <%= transport.type === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="from">From *</label>
+            <input type="text" id="from" name="from" value="<%= transport.from %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="to">To *</label>
+            <input type="text" id="to" name="to" value="<%= transport.to %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Date *</label>
+            <input type="date" id="date" name="date" value="<%= transport.date %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="time">Time *</label>
+            <input type="time" id="time" name="time" value="<%= transport.time %>" required class="form-control">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/trips/<%= trip.id %>" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>
