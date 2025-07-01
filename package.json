@@ -1,0 +1,34 @@
+{
+  "name": "travel-planner",
+  "version": "1.0.0",
+  "description": "Platforma do organizacji podróży i wyjazdów",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node scripts/seed-data.js"
+  },
+  "keywords": [
+    "travel",
+    "planner",
+    "nodejs",
+    "mvc",
+    "ssr"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

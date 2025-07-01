@@ -1,0 +1,29 @@
+<!-- views/places/edit.ejs -->
+<%- include('../layout', { body: ` 
+    <div class="form-container">
+        <h1>Edytuj miejsce</h1>
+        <p class="form-subtitle">Podróż: ${trip.name}</p>
+        
+        <form action="/places/${place.id}?_method=PUT" method="POST" class="form">
+            <div class="form-group">
+                <label for="name">Nazwa miejsca *</label>
+                <input type="text" id="name" name="name" value="${place.name}" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Adres *</label>
+                <input type="text" id="address" name="address" value="${place.address}" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Opis</label>
+                <textarea id="description" name="description" rows="4" class="form-control">${place.description}</textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                <a href="/trips/${trip.id}" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+` }) %>

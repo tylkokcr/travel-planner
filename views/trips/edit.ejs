@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<div class="form-container">
+    <h1>Edit trip</h1>
+    
+    <form action="/trips/<%= trip.id %>?_method=PUT" method="POST" class="form">
+        <div class="form-group">
+            <label for="name">Name of the trip *</label>
+            <input type="text" id="name" name="name" value="<%= trip.name %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Start date *</label>
+            <input type="date" id="startDate" name="startDate" value="<%= trip.startDate %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="endDate">End Date *</label>
+            <input type="date" id="endDate" name="endDate" value="<%= trip.endDate %>" required class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" class="form-control"><%= trip.description %></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <a href="/trips/<%= trip.id %>" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

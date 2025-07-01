@@ -1,0 +1,109 @@
+<%- include('../partials/header') %>
+
+<div class="trip-detail">
+    <div class="trip-header">
+        <h1><%= trip.name %></h1>
+        <div class="trip-actions">
+            <a href="/trips/<%= trip.id %>/edit" class="btn btn-secondary">Edit trip</a>
+            <form action="/trips/<%= trip.id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Czy na pewno chcesz usunąć tę podróż?');">
+                <button type="submit" class="btn btn-danger">Delete trip</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="trip-info">
+        <p><strong>Data:</strong> <%= new Date(trip.startDate).toLocaleDateString('pl-PL') %> - <%= new Date(trip.endDate).toLocaleDateString('pl-PL') %></p>
+        <% if (trip.description) { %>
+            <p><strong>Description:</strong> <%= trip.description %></p>
+        <% } %>
+    </div>
+
+    <!-- Miejsca do odwiedzenia -->
+    <section class="trip-section">
+        <div class="section-header">
+            <h2>📍 Places to visit</h2>
+            <a href="/trips/<%= trip.id %>/places/new" class="btn btn-small btn-primary">Add a place</a>
+        </div>
+        
+        <% if (!places || places.length === 0) { %>
+            <p class="empty-message">No places to visit added.</p>
+        <% } else { %>
+            <div class="items-list">
+                <% places.forEach(place => { %>
+                    <div class="item-card">
+                        <h3><%= place.name %></h3>
+                        <p><strong>Adres:</strong> <%= place.address %></p>
+                        <% if (place.description) { %>
+                            <p><%= place.description %></p>
+                        <% } %>
+                        <div class="item-actions">
+                            <a href="/places/<%= place.id %>/edit" class="btn btn-small btn-secondary">Edit</a>
+                            <form action="/places/<%= place.id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Czy na pewno chcesz usunąć to miejsce?');">
+                                <button type="submit" class="btn btn-small btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </section>
+
+    <!-- Hotele -->
+    <section class="trip-section">
+        <div class="section-header">
+            <h2>🏨 Hotels</h2>
+            <a href="/trips/<%= trip.id %>/hotels/new" class="btn btn-small btn-primary">Add hotel</a>
+        </div>
+        
+        <% if (!hotels || hotels.length === 0) { %>
+            <p class="empty-message">No hotels added.</p>
+        <% } else { %>
+            <div class="items-list">
+                <% hotels.forEach(hotel => { %>
+                    <div class="item-card">
+                        <h3><%= hotel.name %></h3>
+                        <p><strong>Adres:</strong> <%= hotel.address %></p>
+                        <p><strong>Check-in:</strong> <%= new Date(hotel.checkIn).toLocaleDateString('pl-PL') %></p>
+                        <p><strong>Check-out:</strong> <%= new Date(hotel.checkOut).toLocaleDateString('pl-PL') %></p>
+                        <div class="item-actions">
+                            <a href="/hotels/<%= hotel.id %>/edit" class="btn btn-small btn-secondary">Edit</a>
+                            <form action="/hotels/<%= hotel.id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Czy na pewno chcesz usunąć ten hotel?');">
+                                <button type="submit" class="btn btn-small btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </section>
+
+    <!-- Transport -->
+    <section class="trip-section">
+        <div class="section-header">
+            <h2>🚆 Transport</h2>
+            <a href="/trips/<%= trip.id %>/transports/new" class="btn btn-small btn-primary">Add transport</a>
+        </div>
+        
+        <% if (!transports || transports.length === 0) { %>
+            <p class="empty-message">No means of transport added.</p>
+        <% } else { %>
+            <div class="items-list">
+                <% transports.forEach(transport => { %>
+                    <div class="item-card">
+                        <h3><%= transport.type %></h3>
+                        <p><strong>Z:</strong> <%= transport.from %> <strong>Do:</strong> <%= transport.to %></p>
+                        <p><strong>Data:</strong> <%= new Date(transport.date).toLocaleDateString('pl-PL') %> o <%= transport.time %></p>
+                        <div class="item-actions">
+                            <a href="/transports/<%= transport.id %>/edit" class="btn btn-small btn-secondary">Edit</a>
+                            <form action="/transports/<%= transport.id %>?_method=DELETE" method="POST" class="inline-form" onsubmit="return confirm('Czy na pewno chcesz usunąć ten transport?');">
+                                <button type="submit" class="btn btn-small btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </section>
+</div>
+
+<%- include('../partials/footer') %>

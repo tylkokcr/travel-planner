@@ -1,0 +1,7 @@
+<%- include('layout', { body: ` 
+    <div class="error-page">
+        <h1>Błąd <%= status %></h1>
+        <p><%= message %></p>
+        <a href="/" class="btn btn-primary">Return to the main page</a>
+    </div>
+` }) %>

@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<div class="hero">
+    <h1>Welcome to MEK Planner</h1>
+    <p>Plan your next adventure</p>
+    <a href="/trips/new" class="btn btn-primary">Create New Trip</a>
+</div>
+
+<section class="trips-section">
+    <h2>Your Trips</h2>
+    
+    <% if (trips.length === 0) { %>
+        <div class="empty-state">
+            <p>You don't have any planned trips yet.</p>
+            <a href="/trips/new" class="btn btn-secondary">Add Your First Trip</a>
+        </div>
+    <% } else { %>
+        <div class="trips-grid">
+            <% trips.forEach(trip => { %>
+                <div class="trip-card">
+                    <h3><%= trip.name %></h3>
+                    <p class="trip-dates">
+                        <%= new Date(trip.startDate).toLocaleDateString('en-US') %> - 
+                        <%= new Date(trip.endDate).toLocaleDateString('en-US') %>
+                    </p>
+                    <% if (trip.description) { %>
+                        <p class="trip-description"><%= trip.description.substring(0, 100) %>...</p>
+                    <% } %>
+                    <div class="trip-actions">
+                        <a href="/trips/<%= trip.id %>" class="btn btn-small">View Details</a>
+                        <a href="/trips/<%= trip.id %>/edit" class="btn btn-small btn-secondary">Edit</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</section>
+
+<%- include('partials/footer') %>

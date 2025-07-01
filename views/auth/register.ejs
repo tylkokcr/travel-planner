@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="auth-header">
+            <h1>🌍 MEK Planner</h1>
+            <p class="auth-subtitle">Create your account to start planning</p>
+        </div>
+        
+        <form action="/register" method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="username">
+                    <i class="icon">👤</i> Username
+                </label>
+                <input type="text" id="username" name="username" required class="form-control" placeholder="Choose a username">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">
+                    <i class="icon">✉️</i> Email
+                </label>
+                <input type="email" id="email" name="email" required class="form-control" placeholder="Your email address">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">
+                    <i class="icon">🔒</i> Password
+                </label>
+                <input type="password" id="password" name="password" required class="form-control" placeholder="Create a strong password">
+            </div>
+            
+            <div class="form-group">
+                <label for="passwordConfirm">
+                    <i class="icon">🔒</i> Confirm Password
+                </label>
+                <input type="password" id="passwordConfirm" name="passwordConfirm" required class="form-control" placeholder="Re-enter your password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                <span>Create Account</span>
+            </button>
+        </form>
+        
+        <div class="auth-divider">
+            <span>or</span>
+        </div>
+        
+        <div class="auth-links">
+            <p>Already have an account?</p>
+            <a href="/login" class="btn btn-secondary btn-block">Sign In</a>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
